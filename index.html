@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional CV Yaratuvchi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6200;
+            --secondary-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .form-section, .preview-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .preview-section {
+            background-color: #fff;
+            position: relative;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 98, 0, 0.3);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #e05500;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .add-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            background-color: #218838;
+            transform: rotate(90deg);
+        }
+        
+        .remove-btn {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .cv-template {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 595px;
+            height: 842px;
+        }
+        
+        .cv-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .cv-name {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .cv-title {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .cv-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 10px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+        
+        .cv-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cv-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .cv-left, .cv-right {
+            padding: 15px;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .cv-section {
+            margin-bottom: 15px;
+        }
+        
+        .cv-section-title {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .cv-item {
+            margin-bottom: 10px;
+        }
+        
+        .cv-item-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .cv-item-subtitle {
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+        
+        .cv-item-date {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+        }
+        
+        .cv-contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .cv-contact-icon {
+            width: 25px;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        
+        .progress-container {
+            margin-bottom: 8px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+        
+        .template-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .template-option {
+            flex: 1;
+            min-width: 150px;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .template-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .template-option.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(255, 98, 0, 0.3);
+        }
+        
+        .template-preview {
+            height: 120px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .template-name {
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .form-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .form-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .form-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .form-tab:hover:not(.active) {
+            border-bottom-color: #ddd;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .alert {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .cv-left, .cv-right {
+                flex: 100%;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="fade-in">
+            <h1>Professional CV Yaratuvchi</h1>
+            <p>O'zingizga mos professional CV yarating va PDF yoki rasm sifatida yuklab oling</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="form-section fade-in" style="animation-delay: 0.2s;">
+                <h2 class="section-title">Ma'lumotlarni Kiriting</h2>
+                
+                <div class="alert alert-success" id="successAlert">
+                    CV muvaffaqiyatli yaratildi! Endi uni yuklab olishingiz mumkin.
+                </div>
+                
+                <div class="alert alert-danger" id="errorAlert">
+                    Iltimos, kerakli maydonlarni to'ldiring!
+                </div>
+                
+                <div class="form-tabs">
+                    <div class="form-tab active" data-tab="basic">Asosiy</div>
+                    <div class="form-tab" data-tab="experience">Tajriba</div>
+                    <div class="form-tab" data-tab="education">Ta'lim</div>
+                    <div class="form-tab" data-tab="skills">Ko'nikmalar</div>
+                </div>
+                
+                <div class="tab-content active" id="basic-tab">
+                    <div class="form-group">
+                        <label for="fullName">To'liq Ism</label>
+                        <input type="text" id="fullName" placeholder="Familiya Ism Sharif">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jobTitle">Lavozim</label>
+                        <input type="text" id="jobTitle" placeholder="Ishlagan lavozimingiz">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="summary">Qisqacha ma'lumot</label>
+                        <textarea id="summary" placeholder="O'zingiz haqingizda qisqacha..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photo">Profil rasmi (ixtiyoriy)</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="experience-tab">
+                    <div id="experience-fields">
+                        <div class="experience-item">
+                            <div class="form-group">
+                                <label>Lavozim</label>
+                                <input type="text" class="exp-position" placeholder="Masalan: Dasturchi">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Korxona</label>
+                                <input type="text" class="exp-company" placeholder="Korxona nomi">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Sana</label>
+                                <input type="text" class="exp-date" placeholder="Masalan: 2020 - Hozirgacha">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tavsif</label>
+                                <textarea class="exp-description" placeholder="Ish tajribangiz haqida..."></textarea>
+                            </div>
+                            
+                            <button class="remove-btn remove-experience"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-btn" id="add-experience"><i class="fas fa-plus"></i> +</button>
+                </div>
+                
+                <div class="tab-content" id="education-tab">
+                    <div id="education-fields">
+                        <div class="education-item">
+                            <div class="form-group">
+                                <label>Ta'lim darajasi</label>
+                                <input type="text" class="edu-degree" placeholder="Masalan: Bakalavr">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>O'quv muassasasi</label>
+                                <input type="text" class="edu-institution" placeholder="Universitet nomi">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Sana</label>
+                                <input type="text" class="edu-date" placeholder="Masalan: 2016 - 2020">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tavsif (ixtiyoriy)</label>
+                                <textarea class="edu-description" placeholder="Qo'shimcha ma'lumotlar..."></textarea>
+                            </div>
+                            
+                            <button class="remove-btn remove-education"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-btn" id="add-education"><i class="fas fa-plus"></i> +</button>
+                </div>
+                
+                <div class="tab-content" id="skills-tab">
+                    <div class="form-group">
+                        <label for="skills">Professional ko'nikmalar</label>
+                        <div id="skill-fields">
+                            <div class="skill-item" style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                                <input type="text" class="skill-name" placeholder="Ko'nikma nomi" style="flex: 2;">
+                                <select class="skill-level" style="flex: 1;">
+                                    <option value="beginner">Boshlang'ich</option>
+                                    <option value="intermediate">O'rta</option>
+                                    <option value="advanced">Yuqori</option>
+                                    <option value="expert">Expert</option>
+                                </select>
+                                <button class="remove-btn remove-skill"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <button class="add-btn" id="add-skill" style="margin-top: 10px;">+</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="languages">Biladigan tillar</label>
+                        <div id="language-fields">
+                            <div class="language-item">
+                                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                                    <input type="text" class="lang-name" placeholder="Til nomi" style="flex: 2;">
+                                    <select class="lang-level" style="flex: 1;">
+                                        <option value="beginner">Boshlang'ich</option>
+                                        <option value="intermediate">O'rta</option>
+                                        <option value="advanced">Yuqori</option>
+                                        <option value="native">Ona tili</option>
+                                    </select>
+                                    <button class="remove-btn remove-language"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-btn" id="add-language" style="margin-top: 10px;">+</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">Elektron pochta</label>
+                        <input type="text" id="contact-email" placeholder="email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone">Telefon raqam</label>
+                        <input type="text" id="contact-phone" placeholder="+998901234567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-address">Manzil</label>
+                        <input type="text" id="contact-address" placeholder="Shahar, tuman">
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn" id="generateCv">CV Yaratish</button>
+                </div>
+            </section>
+            
+            <section class="preview-section fade-in" style="animation-delay: 0.4s;">
+                <h2 class="section-title">CV Ko'rinishi</h2>
+                
+                <div class="template-selector">
+                    <div class="template-option active" data-template="classic">
+                        <div class="template-preview" style="background-color: #2c3e50; color: white;">
+                            Classic
+                        </div>
+                        <div class="template-name">Classic</div>
+                    </div>
+                    <div class="template-option" data-template="modern">
+                        <div class="template-preview" style="background-color: #ff6200; color: white;">
+                            Modern
+                        </div>
+                        <div class="template-name">Modern</div>
+                    </div>
+                    <div class="template-option" data-template="creative">
+                        <div class="template-preview" style="background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%); color: white;">
+                            Creative
+                        </div>
+                        <div class="template-name">Creative</div>
+                    </div>
+                </div>
+                
+                <div class="cv-template" id="cv-preview">
+                    <div class="cv-header">
+                        <div class="cv-photo">
+                            <img id="cv-photo-preview" src="" alt="Profil rasmi" style="display: none;">
+                            <i class="fas fa-user" style="font-size: 50px; line-height: 100px; color: #ccc;"></i>
+                        </div>
+                        <h1 class="cv-name">Ism Familiya</h1>
+                        <h2 class="cv-title">Lavozim</h2>
+                    </div>
+                    
+                    <div class="cv-body">
+                        <div class="cv-left">
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Ma'lumot</h3>
+                                <div class="cv-item">
+                                    <p id="cv-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Tajriba</h3>
+                                <div class="cv-item" id="cv-experience">
+                                    <div class="cv-item-title">Lavozim</div>
+                                    <div class="cv-item-subtitle">Korxona nomi</div>
+                                    <div class="cv-item-date">2020 - Hozirgacha</div>
+                                    <p>Tajriba haqida qisqacha ma'lumot...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Ta'lim</h3>
+                                <div class="cv-item" id="cv-education">
+                                    <div class="cv-item-title">Ta'lim darajasi</div>
+                                    <div class="cv-item-subtitle">O'quv muassasasi</div>
+                                    <div class="cv-item-date">2016 - 2020</div>
+                                    <p>Qo'shimcha ma'lumotlar...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cv-right">
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Aloqa</h3>
+                                <div class="cv-contact-item">
+                                    <div class="cv-contact-icon"><i class="fas fa-envelope"></i></div>
+                                    <div id="cv-email">email@example.com</div>
+                                </div>
+                                <div class="cv-contact-item">
+                                    <div class="cv-contact-icon"><i class="fas fa-phone"></i></div>
+                                    <div id="cv-phone">+998901234567</div>
+                                </div>
+                                <div class="cv-contact-item">
+                                    <div class="cv-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div id="cv-address">Shahar, tuman</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Ko'nikmalar</h3>
+                                <div id="cv-skills">
+                                    <div class="progress-container">
+                                        <div class="progress-label">
+                                            <span>Ko'nikma nomi</span>
+                                            <span>85%</span>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <div class="skill-level" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cv-section">
+                                <h3 class="cv-section-title">Tillar</h3>
+                                <div id="cv-languages">
+                                    <div class="cv-item">
+                                        <div class="cv-item-title">Ingliz tili</div>
+                                        <div class="cv-item-subtitle">Yuqori daraja</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-success" id="downloadPdf"><i class="fas fa-file-pdf"></i> PDF Yuklab Olish</button>
+                    <button class="btn btn-secondary" id="downloadJpg"><i class="fas fa-file-image"></i> Rasm Yuklab Olish</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        // Tab navigation
+        document.querySelectorAll('.form-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`${tab.getAttribute('data-tab')}-tab`).classList.add('active');
+            });
+        });
+        
+        // Template selection
+        document.querySelectorAll('.template-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.template-option').forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                // Template style change can be implemented here
+            });
+        });
+        
+        // Add experience
+        document.getElementById('add-experience').addEventListener('click', () => {
+            const experienceFields = document.getElementById('experience-fields');
+            const newExperience = document.createElement('div');
+            newExperience.className = 'experience-item';
+            newExperience.innerHTML = `
+                <div class="form-group">
+                    <label>Lavozim</label>
+                    <input type="text" class="exp-position" placeholder="Masalan: Dasturchi">
+                </div>
+                <div class="form-group">
+                    <label>Korxona</label>
+                    <input type="text" class="exp-company" placeholder="Korxona nomi">
+                </div>
+                <div class="form-group">
+                    <label>Sana</label>
+                    <input type="text" class="exp-date" placeholder="Masalan: 2020 - Hozirgacha">
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea class="exp-description" placeholder="Ish tajribangiz haqida..."></textarea>
+                </div>
+                <button class="remove-btn remove-experience"><i class="fas fa-times"></i></button>
+            `;
+            experienceFields.appendChild(newExperience);
+            newExperience.style.opacity = '0';
+            setTimeout(() => {
+                newExperience.style.transition = 'opacity 0.3s ease';
+                newExperience.style.opacity = '1';
+            }, 10);
+        });
+        
+        // Remove experience
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-experience')) {
+                const experienceItem = e.target.closest('.experience-item');
+                experienceItem.style.transition = 'opacity 0.3s ease';
+                experienceItem.style.opacity = '0';
+                setTimeout(() => {
+                    experienceItem.remove();
+                }, 300);
+            }
+        });
+        
+        // Add education
+        document.getElementById('add-education').addEventListener('click', () => {
+            const educationFields = document.getElementById('education-fields');
+            const newEducation = document.createElement('div');
+            newEducation.className = 'education-item';
+            newEducation.innerHTML = `
+                <div class="form-group">
+                    <label>Ta'lim darajasi</label>
+                    <input type="text" class="edu-degree" placeholder="Masalan: Bakalavr">
+                </div>
+                <div class="form-group">
+                    <label>O'quv muassasasi</label>
+                    <input type="text" class="edu-institution" placeholder="Universitet nomi">
+                </div>
+                <div class="form-group">
+                    <label>Sana</label>
+                    <input type="text" class="edu-date" placeholder="Masalan: 2016 - 2020">
+                </div>
+                <div class="form-group">
+                    <label>Tavsif (ixtiyoriy)</label>
+                    <textarea class="edu-description" placeholder="Qo'shimcha ma'lumotlar..."></textarea>
+                </div>
+                <button class="remove-btn remove-education"><i class="fas fa-times"></i></button>
+            `;
+            educationFields.appendChild(newEducation);
+            newEducation.style.opacity = '0';
+            setTimeout(() => {
+                newEducation.style.transition = 'opacity 0.3s ease';
+                newEducation.style.opacity = '1';
+            }, 10);
+        });
+        
+        // Remove education
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-education')) {
+                const educationItem = e.target.closest('.education-item');
+                educationItem.style.transition = 'opacity 0.3s ease';
+                educationItem.style.opacity = '0';
+                setTimeout(() => {
+                    educationItem.remove();
+                }, 300);
+            }
+        });
+        
+        // Add skill
+        document.getElementById('add-skill').addEventListener('click', () => {
+            const skillFields = document.getElementById('skill-fields');
+            const newSkill = document.createElement('div');
+            newSkill.className = 'skill-item';
+            newSkill.innerHTML = `
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                    <input type="text" class="skill-name" placeholder="Ko'nikma nomi" style="flex: 2;">
+                    <select class="skill-level" style="flex: 1;">
+                        <option value="beginner">Boshlang'ich</option>
+                        <option value="intermediate">O'rta</option>
+                        <option value="advanced">Yuqori</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                    <button class="remove-btn remove-skill"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+            skillFields.appendChild(newSkill);
+            newSkill.style.opacity = '0';
+            setTimeout(() => {
+                newSkill.style.transition = 'opacity 0.3s ease';
+                newSkill.style.opacity = '1';
+            }, 10);
+        });
+        
+        // Remove skill
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-skill')) {
+                const skillItem = e.target.closest('.skill-item');
+                skillItem.style.transition = 'opacity 0.3s ease';
+                skillItem.style.opacity = '0';
+                setTimeout(() => {
+                    skillItem.remove();
+                }, 300);
+            }
+        });
+        
+        // Add language
+        document.getElementById('add-language').addEventListener('click', () => {
+            const languageFields = document.getElementById('language-fields');
+            const newLanguage = document.createElement('div');
+            newLanguage.className = 'language-item';
+            newLanguage.innerHTML = `
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                    <input type="text" class="lang-name" placeholder="Til nomi" style="flex: 2;">
+                    <select class="lang-level" style="flex: 1;">
+                        <option value="beginner">Boshlang'ich</option>
+                        <option value="intermediate">O'rta</option>
+                        <option value="advanced">Yuqori</option>
+                        <option value="native">Ona tili</option>
+                    </select>
+                    <button class="remove-btn remove-language"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+            languageFields.appendChild(newLanguage);
+            newLanguage.style.opacity = '0';
+            setTimeout(() => {
+                newLanguage.style.transition = 'opacity 0.3s ease';
+                newLanguage.style.opacity = '1';
+            }, 10);
+        });
+        
+        // Remove language
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-language')) {
+                const languageItem = e.target.closest('.language-item');
+                languageItem.style.transition = 'opacity 0.3s ease';
+                languageItem.style.opacity = '0';
+                setTimeout(() => {
+                    languageItem.remove();
+                }, 300);
+            }
+        });
+        
+        // Photo upload preview
+        document.getElementById('photo').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imgPreview = document.getElementById('cv-photo-preview');
+                    imgPreview.src = event.target.result;
+                    imgPreview.style.display = 'block';
+                    imgPreview.nextElementSibling.style.display = 'none';
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+        
+        // Generate CV
+        document.getElementById('generateCv').addEventListener('click', function() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const jobTitle = document.getElementById('jobTitle').value.trim();
+            
+            if (!fullName || !jobTitle) {
+                document.getElementById('errorAlert').style.display = 'block';
+                document.getElementById('successAlert').style.display = 'none';
+                if (!fullName) document.getElementById('fullName').classList.add('shake');
+                if (!jobTitle) document.getElementById('jobTitle').classList.add('shake');
+                setTimeout(() => {
+                    document.getElementById('fullName').classList.remove('shake');
+                    document.getElementById('jobTitle').classList.remove('shake');
+                }, 500);
+                return;
+            }
+            
+            document.getElementById('errorAlert').style.display = 'none';
+            
+            document.querySelector('.cv-name').textContent = fullName;
+            document.querySelector('.cv-title').textContent = jobTitle;
+            
+            const summary = document.getElementById('summary').value.trim();
+            document.getElementById('cv-summary').textContent = summary || 'Qisqacha ma\'lumot kiritilmagan';
+            
+            const experienceItems = document.querySelectorAll('.experience-item');
+            const cvExperience = document.getElementById('cv-experience');
+            cvExperience.innerHTML = '';
+            if (experienceItems.length === 0) {
+                cvExperience.innerHTML = '<p>Tajriba haqida ma\'lumot kiritilmagan</p>';
+            } else {
+                experienceItems.forEach(item => {
+                    const position = item.querySelector('.exp-position').value.trim();
+                    const company = item.querySelector('.exp-company').value.trim();
+                    const date = item.querySelector('.exp-date').value.trim();
+                    const description = item.querySelector('.exp-description').value.trim();
+                    if (position || company || date || description) {
+                        const expItem = document.createElement('div');
+                        expItem.className = 'cv-item';
+                        expItem.innerHTML = `
+                            ${position ? `<div class="cv-item-title">${position}</div>` : ''}
+                            ${company ? `<div class="cv-item-subtitle">${company}</div>` : ''}
+                            ${date ? `<div class="cv-item-date">${date}</div>` : ''}
+                            ${description ? `<p>${description}</p>` : ''}
+                        `;
+                        cvExperience.appendChild(expItem);
+                    }
+                });
+                if (cvExperience.innerHTML === '') {
+                    cvExperience.innerHTML = '<p>Tajriba haqida ma\'lumot kiritilmagan</p>';
+                }
+            }
+            
+            const educationItems = document.querySelectorAll('.education-item');
+            const cvEducation = document.getElementById('cv-education');
+            cvEducation.innerHTML = '';
+            if (educationItems.length === 0) {
+                cvEducation.innerHTML = '<p>Ta\'lim haqida ma\'lumot kiritilmagan</p>';
+            } else {
+                educationItems.forEach(item => {
+                    const degree = item.querySelector('.edu-degree').value.trim();
+                    const institution = item.querySelector('.edu-institution').value.trim();
+                    const date = item.querySelector('.edu-date').value.trim();
+                    const description = item.querySelector('.edu-description').value.trim();
+                    if (degree || institution || date || description) {
+                        const eduItem = document.createElement('div');
+                        eduItem.className = 'cv-item';
+                        eduItem.innerHTML = `
+                            ${degree ? `<div class="cv-item-title">${degree}</div>` : ''}
+                            ${institution ? `<div class="cv-item-subtitle">${institution}</div>` : ''}
+                            ${date ? `<div class="cv-item-date">${date}</div>` : ''}
+                            ${description ? `<p>${description}</p>` : ''}
+                        `;
+                        cvEducation.appendChild(eduItem);
+                    }
+                });
+                if (cvEducation.innerHTML === '') {
+                    cvEducation.innerHTML = '<p>Ta\'lim haqida ma\'lumot kiritilmagan</p>';
+                }
+            }
+            
+            const skillItems = document.querySelectorAll('.skill-item');
+            const cvSkills = document.getElementById('cv-skills');
+            cvSkills.innerHTML = '';
+            if (skillItems.length === 0) {
+                cvSkills.innerHTML = '<p>Ko\'nikmalar haqida ma\'lumot kiritilmagan</p>';
+            } else {
+                skillItems.forEach(item => {
+                    const name = item.querySelector('.skill-name').value.trim();
+                    const level = item.querySelector('.skill-level').value;
+                    if (name) {
+                        let levelPercent = 0;
+                        switch (level) {
+                            case 'beginner': levelPercent = 25; break;
+                            case 'intermediate': levelPercent = 50; break;
+                            case 'advanced': levelPercent = 75; break;
+                            case 'expert': levelPercent = 100; break;
+                        }
+                        const skillItem = document.createElement('div');
+                        skillItem.className = 'progress-container';
+                        skillItem.innerHTML = `
+                            <div class="progress-label">
+                                <span>${name}</span>
+                                <span>${levelPercent}%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: ${levelPercent}%"></div>
+                            </div>
+                        `;
+                        cvSkills.appendChild(skillItem);
+                    }
+                });
+                if (cvSkills.innerHTML === '') {
+                    cvSkills.innerHTML = '<p>Ko\'nikmalar haqida ma\'lumot kiritilmagan</p>';
+                }
+            }
+            
+            const languageItems = document.querySelectorAll('.language-item');
+            const cvLanguages = document.getElementById('cv-languages');
+            cvLanguages.innerHTML = '';
+            if (languageItems.length === 0) {
+                cvLanguages.innerHTML = '<p>Tillar haqida ma\'lumot kiritilmagan</p>';
+            } else {
+                languageItems.forEach(item => {
+                    const name = item.querySelector('.lang-name').value.trim();
+                    const level = item.querySelector('.lang-level').value;
+                    if (name) {
+                        const langItem = document.createElement('div');
+                        langItem.className = 'cv-item';
+                        let levelText = '';
+                        switch (level) {
+                            case 'beginner': levelText = 'Boshlang\'ich daraja'; break;
+                            case 'intermediate': levelText = 'O\'rta daraja'; break;
+                            case 'advanced': levelText = 'Yuqori daraja'; break;
+                            case 'native': levelText = 'Ona tili'; break;
+                        }
+                        langItem.innerHTML = `
+                            <div class="cv-item-title">${name}</div>
+                            <div class="cv-item-subtitle">${levelText}</div>
+                        `;
+                        cvLanguages.appendChild(langItem);
+                    }
+                });
+                if (cvLanguages.innerHTML === '') {
+                    cvLanguages.innerHTML = '<p>Tillar haqida ma\'lumot kiritilmagan</p>';
+                }
+            }
+            
+            const email = document.getElementById('contact-email').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const address = document.getElementById('contact-address').value.trim();
+            
+            document.getElementById('cv-email').textContent = email || 'Kiritilmagan';
+            document.getElementById('cv-phone').textContent = phone || 'Kiritilmagan';
+            document.getElementById('cv-address').textContent = address || 'Kiritilmagan';
+            
+            document.getElementById('successAlert').style.display = 'block';
+            document.querySelector('.preview-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Download PDF
+        document.getElementById('downloadPdf').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: [595 / 3.78, 842 / 3.78] // Convert pixels to mm (1mm = 3.78px approximately)
+            });
+            const cvPreview = document.getElementById('cv-preview');
+            
+            html2canvas(cvPreview, {
+                scale: 2,
+                logging: false,
+                useCORS: true,
+                allowTaint: true,
+                width: 595,
+                height: 842
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 595 / 3.78; // Convert to mm
+                const imgHeight = 842 / 3.78; // Convert to mm
+                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                const fullName = document.getElementById('fullName').value.trim() || 'CV';
+                doc.save(`${fullName}.pdf`);
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+                alert('PDF yaratishda xatolik yuz berdi. Iltimos, qaytadan urunib ko\'ring.');
+            });
+        });
+        
+        // Download JPG
+        document.getElementById('downloadJpg').addEventListener('click', function() {
+            const cvPreview = document.getElementById('cv-preview');
+            
+            html2canvas(cvPreview, {
+                scale: 2,
+                logging: false,
+                useCORS: true,
+                allowTaint: true,
+                width: 595,
+                height: 842
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `${document.getElementById('fullName').value.trim() || 'CV'}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 1.0);
+                link.click();
+            }).catch(error => {
+                console.error('Error generating JPG:', error);
+                alert('Rasm yaratishda xatolik yuz berdi. Iltimos, qaytadan urunib ko\'ring.');
+            });
+        });
+    </script>
+</body>
+</html>
